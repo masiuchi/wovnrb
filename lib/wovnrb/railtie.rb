@@ -1,6 +1,6 @@
 module Wovnrb
   def self.middleware_inserted?(app, middleware)
-    app.middleware.send(:operations).each do |_, middlewares, _|
+    app.middleware.instance_variable_get(:@operations).each do |_, middlewares, _|
       return true if middlewares.include?(middleware)
     end
 
